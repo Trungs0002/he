@@ -1,0 +1,10 @@
+host: api.tanca.io/
+info:
+  contact: {}
+  description: This is the API documentation for Tanca Intern Golang.
+  title: Tanca Intern Golang API
+  version: "1"
+paths: {}
+schemes:
+- https
+swagger: "2.0"
