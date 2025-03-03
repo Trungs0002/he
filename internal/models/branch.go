@@ -7,12 +7,22 @@ import (
 )
 
 type Branch struct {
-	ID        primitive.ObjectID `bson:"_id"`
-	Name      string             `bson:"name"`
-	Alias     string             `bson:"alias"`
-	ShopID    primitive.ObjectID `bson:"shop_id"`
-	Code      string             `bson:"code"`
-	CreatedAt time.Time          `bson:"created_at"`
-	UpdatedAt time.Time          `bson:"updated_at"`
-	DeletedAt *time.Time         `bson:"deleted_at,omitempty"`
+	// ID         primitive.ObjectID `bson:"_id"`
+	// Name       string             `bson:"name"`
+	// Alias      string             `bson:"alias"`
+	// ShopID     primitive.ObjectID `bson:"shop_id"`
+	// Code       string             `bson:"code"`
+	// Departments []Department      `bson:"departments"`
+	// CreatedAt  time.Time          `bson:"created_at"`
+	// UpdatedAt  time.Time          `bson:"updated_at"`
+	// DeletedAt  *time.Time         `bson:"deleted_at,omitempty"`
+	ID         primitive.ObjectID   `bson:"_id"`
+	Name       string               `bson:"name"`
+	Alias      string               `bson:"alias"`
+	ShopID     primitive.ObjectID   `bson:"shop_id"`
+	Department []primitive.ObjectID `bson:"depart"`
+	Code       string               `bson:"code"`
+	CreatedAt  time.Time            `bson:"created_at"`
+	UpdatedAt  time.Time            `bson:"updated_at"`
+	DeletedAt  *time.Time           `bson:"deleted_at,omitempty"`
 }

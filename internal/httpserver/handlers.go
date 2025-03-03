@@ -7,7 +7,6 @@ import (
 )
 
 func (srv HTTPServer) mapHandlers() {
-	// jwtManager := jwt.NewManager(srv.jwtSecretKey)
 	// Repositories
 	branchRepo := branchMongo.NewRepository(srv.l, srv.database)
 
@@ -18,9 +17,8 @@ func (srv HTTPServer) mapHandlers() {
 	branchH := branchHTTP.New(srv.l, branchUC)
 
 	// Middlewares
-	// mw := middleware.New(srv.l, jwtManager, srv.encrypter)
 
 	api := srv.gin.Group("/api/v1")
 
-	branchHTTP.MapRoutes(api.Group("/branches"), branchH)
+	branchHTTP.MapRoutes(api.Group("/branches"), mw, branchH)
 }

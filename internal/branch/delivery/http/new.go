@@ -8,6 +8,10 @@ import (
 
 type Handler interface {
 	create(c *gin.Context)
+	listBranches(c *gin.Context)
+	update(c *gin.Context)
+	delete(c *gin.Context)
+	get(c *gin.Context)
 }
 
 type handler struct {
@@ -15,7 +19,6 @@ type handler struct {
 	uc branch.Usecase
 }
 
-// New returns a new instance of the HTTPHandler interface
 func New(l log.Logger, uc branch.Usecase) Handler {
 	return handler{
 		l:  l,
