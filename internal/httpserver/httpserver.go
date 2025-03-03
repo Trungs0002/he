@@ -22,5 +22,4 @@ func (srv HTTPServer) Run() {
 	signal.Notify(ch, syscall.SIGINT, syscall.SIGTERM)
 	srv.l.Info(ctx, <-ch)
 	srv.l.Info(ctx, "Stopping API server.")
-
 }
