@@ -1,8 +1,11 @@
 package mongo
 
 import (
+	"context"
 	"time"
 
+	"gitlab.com/gma-vietnam/tanca-event/internal/models"
+	"gitlab.com/gma-vietnam/tanca-event/pkg/log"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
@@ -40,4 +43,20 @@ func BuildQueryWithSoftDelete(query bson.M) bson.M {
 
 func GetMongoDateTimeNow() primitive.DateTime {
 	return primitive.NewDateTimeFromTime(time.Now())
+}
+
+
+func BuildScopeQuery(ctx context.Context, l log.Logger, sc models.Scope) (bson.M, error) {
+	filter := bson.M{}
+
+	if sc.ShopID != "" {
+		ShopId, err := primitive.ObjectIDFromHex(sc.ShopID)
+		if err != nil {
+			l.Errorf(ctx, "pkgmongo.BuildScopeQuery: %v", err)
+			return nil, err
+		}
+		filter["shop_id"] = ShopId
+	}
+
+	return filter, nil
 }
